@@ -1,0 +1,36 @@
+[package]
+name = "betternotes"
+version = "0.1.0"
+edition = "2024"
+description = "Handwritten notes app"
+
+[dependencies]
+arboard = "3"
+eframe = "0.36"
+image = "0.25"
+miniz_oxide = "0.9.1"
+pdf-writer = "0.15"
+rfd = "0.17"
+serde = { version = "1.0.229", features = ["derive", "rc"] }
+serde_json = "1.0.151"
+tiny-skia = "0.12"
+base64 = "0.22"
+egui-phosphor = "0.14"
+ttf-parser = "0.25"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+objc2 = "0.6"
+objc2-app-kit = { version = "0.3", features = ["NSEvent", "block2"] }
+block2 = "0.6"
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[target.'cfg(windows)'.build-dependencies]
+winresource = "0.1"
+
+[dev-dependencies]
+egui_kittest = { version = "0.36", features = ["wgpu", "eframe", "snapshot"] }
