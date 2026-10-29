@@ -120,17 +120,3 @@ jobs:
           files: dist/*
           generate_release_notes: true
 
-      # Needs a HOMEBREW_TAP_TOKEN secret with write access to 1grzyb1/homebrew-betternotes.
-      - name: Update Homebrew cask
-        env:
-          TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN }}
-        if: env.TOKEN != ''
-        run: |
-          VERSION=${GITHUB_REF_NAME#v}
-          SHA=$(sha256sum dist/BetterNotes-macos-universal.zip | cut -d' ' -f1)
-          git clone -q https://x-access-token:$TOKEN@github.com/1grzyb1/homebrew-betternotes.git tap
-          cd tap
-          sed -i -E "s/^  version \".*\"/  version \"$VERSION\"/; s/^  sha256 \".*\"/  sha256 \"$SHA\"/" Casks/betternotes.rb
-          git -c user.name=github-actions -c user.email=github-actions@users.noreply.github.com \
-            commit -qam "betternotes $VERSION"
-          git push -q
