@@ -15,9 +15,25 @@ A handwritten notebook for the desktop. Write with a pen tablet or a mouse, then
 
 ## Install
 
-Prebuilt binaries for macOS, Windows and Linux are on the [Releases](../../releases) page.
+**macOS** (Homebrew)
 
-The macOS build isn't notarized. On first launch, right-click the app and choose **Open**.
+```sh
+brew install --cask 1grzyb1/betternotes/betternotes
+```
+
+**macOS / Linux**
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/1grzyb1/betternotes/main/install.sh | sh
+```
+
+**Windows** (PowerShell)
+
+```powershell
+irm https://raw.githubusercontent.com/1grzyb1/betternotes/main/install.ps1 | iex
+```
+
+Or grab a zip from [Releases](../../releases). The macOS build isn't notarized, so a manually downloaded copy needs right-click → **Open** the first time; the installers above take care of that.
 
 From source:
 
